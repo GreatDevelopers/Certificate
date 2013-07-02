@@ -3,7 +3,7 @@
 require_once('../library/odf.php');
 require_once('dbase.php');
 
-$odf = new odf("Blue.odt");
+$odf = new odf("new.odt");
 
 // Assigning Form data to variables.
 $var =0;
@@ -53,7 +53,7 @@ while($row = mysql_fetch_array($result))
 		 //image
             
                 $pic = "uploads/" . $row['photo'];
-                $article->setImage('pic',$pic,4,4);
+                $article->setImage('pic',$pic,4);
 		
 		//name
                 if($row['middle_name']==NULL)
