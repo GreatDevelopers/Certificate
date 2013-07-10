@@ -1,0 +1,47 @@
+\documentclass[16pt,a4paper]{scrartcl}                            
+\usepackage[landscape]{geometry}  % for layout
+\usepackage{setspace} % to set spacing between lines
+\usepackage{graphicx}  % to include images    
+\usepackage{eso-pic} % to include background image
+\usepackage{ifthen} % to use ifelse condition
+
+ \newcommand\BackgroundPic{
+ \put(0,0){
+ \parbox[b][\paperheight]{\paperwidth}{
+ \vfill
+ \centering
+ \includegraphics[width=\paperwidth,height=\paperheight,
+ keepaspectratio]{certificate.jpg}              
+ \vfill
+ }}} % including background image
+
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+\usepackage{datatool} % to include csv file
+\DTLloaddb{names}{data1.csv} % including information from data1.csv file
+    
+\begin{document}
+\AddToShipoutPicture{\BackgroundPic} % call to background image 
+\DTLforeach{names}{
+\sal=Sal,\firstname=1st Name,\middlename=Middle Name,\lastname=Last Name,\institue=Institute,\city=City,\photo=Photo}{
+\begin{minipage}[l]{1.4in}
+\includegraphics[width=.92\linewidth]{logo.png}  %including left side image
+\end{minipage}
+\hfill 
+\begin{minipage}[c]{6.5in}
+\end{minipage}
+\hfill
+\begin{minipage}[r]{1.0in}
+\includegraphics[width=1.35\linewidth]{\photo} %including right side image
+\end{minipage}
+\\\\\\\\\\\\\\\\
+\ifthenelse{\equal{\middlename}{\empty}}{\noindent{{\large{\emph {This is to certify that {\Large{\textcolor{red}{\sal \firstname}}}  {\Large{\textcolor{red}{\lastname}}} of {\Large{\textcolor{red}{\institue}}}, {\Large{\textcolor{red}{\city}}} attended the Faculty Development Program on Recent Advancements in Manufacturing Technology.}}}}}
+{{\noindent{{\large{\emph {This is to certify that {\Large{\textcolor{red}{\sal \firstname}}}  {\Large{\textcolor{red}{\middlename}}}  {\Large{\textcolor{red}{\lastname}}} of  {\Large{\textcolor{red}{\institue}}},  {\Large{\textcolor{red}{\city}}} attended the Faculty Development Program on Recent Advancements in Manufacturing Technology.}}}}}
+} % used ifelse in case of missing middle names
+
+\pagebreak}
+
+\end{document}
