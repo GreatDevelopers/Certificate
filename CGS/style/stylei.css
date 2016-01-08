@@ -1,0 +1,151 @@
+
+html, body, div, span, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, font, img, ul, li {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+
+:focus {
+	outline: 0;
+}
+/* // Reset */
+
+body {
+	background: url(bck.jpg); /* image for body made with Photoshop using noise filter (gaussian monochromatic) on #ccc */
+	font-family: Georgia, Verdana, “Lucida Sans Unicode”, sans-serif;
+	font-size: 12px;
+	color: #999;
+}
+
+h2 {
+	font-style: italic;
+	font-weight: normal;
+	line-height: 1.2em;
+}
+
+div#container {
+	margin: 20px auto 0px auto; /* centered */
+	width: 1000px;
+	overflow:hidden;
+}
+
+.bubble {
+	clear: both;
+	margin: 10px auto;
+	width: 880px;
+	background: #fff;
+	-moz-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -webkit-border-radius: 10px;
+	-moz-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+  -khtml-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
+	position: relative;
+	z-index: 90; /* the stack order: displayed under ribbon rectangle (100) */
+}
+
+.rectangle {
+	background: #7f9db9;
+	height: 50px;
+	width: 910px;
+	position: relative;
+	left:-15px;
+	top: 30px;
+	float: left;
+	-moz-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+  -khtml-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+  -webkit-box-shadow: 0px 0px 4px rgba(0,0,0,0.55);
+	z-index: 100; /* the stack order: foreground */
+}
+
+.rectangle h2 {
+	font-size: 30px;
+	color: #fff;
+	padding-top: 6px;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+	text-align: center;
+}
+.triangle-l {
+	border-color: transparent #7d90a3 transparent transparent;
+	border-style:solid;
+	border-width:15px;
+	height:0px;
+	width:0px;
+	position: relative;
+	left: -30px;
+	top: 65px;
+	z-index: -1; /* displayed under bubble */
+}
+
+.triangle-r {
+	border-color: transparent transparent transparent #7d90a3;
+	border-style:solid;
+	border-width:15px;
+	height:0px;
+	width:0px;
+	position: relative;
+	left: 880px;
+	top: 35px;
+	z-index: -1; /* displayed under bubble */
+}
+
+.info {
+	padding: 60px 25px 35px 25px;
+}
+
+.info h2 {
+	font-size: 20px;
+}
+
+.info p {
+	padding-top: 10px;
+	font-size: 14px;
+	line-height: 22px;
+}
+
+.info p a {
+	color: #c4591e;
+	text-decoration: none;
+}
+
+.info p a:hover {
+	text-decoration: underline;
+}
+.spa {
+border: 3px solid gray ;
+width:218px;
+
+padding:200px;
+margin:10px auto;
+} 
+
+.thumb img { 
+	border:1px solid #000;
+	position:left;
+
+}
+.thumb:hover {
+	border:0; /* IE6 needs this to show large image */
+	z-index:1;
+}
+.thumb span { 
+	position:absolute;
+	visibility:hidden;
+         
+}
+.thumb:hover span { 
+	visibility:visible;
+float:left;
+	top:178px; left:130px; 
+}

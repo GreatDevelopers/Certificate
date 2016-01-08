@@ -1,0 +1,36 @@
+header
+{
+height:40px;
+text-align:center;
+}
+
+body
+{
+background-image:url('bck.jpg');
+font-family:"open sans",sans-serif;
+}
+
+table
+{
+margin:auto;
+text-align:left;
+}
+
+.bottom-one 
+{
+margin-bottom: 1cm;
+}
+
+#new
+{
+max-width:390px;
+margin:auto;
+text-align:left;
+}
+
+#submit
+{
+min-width:400px;
+max-width:30%;
+margin:auto;
+}
