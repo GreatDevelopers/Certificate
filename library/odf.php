@@ -19,6 +19,14 @@ class OdfException extends Exception
  * @license    http://www.gnu.org/copyleft/gpl.html  GPL License
  * @version 1.3
  */
+ if (extension_loaded('zlib')) {
+    if (!function_exists('gzopen') && function_exists('gzopen64')) {
+        function gzopen($filename, $mode, $use_include_path = 0) {
+            return gzopen64( $filename, $mode, $use_include_path );
+        }
+    }
+}
+ 
 class Odf
 {
     protected $config = array(
