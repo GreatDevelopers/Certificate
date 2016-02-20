@@ -34,7 +34,7 @@ move_uploaded_file($_FILES["file"]["tmp_name"],"uploads/csv/data/".$csv);
 $base = $_SESSION["base"];			//Getting file name with filled Institute Details
   
 $odf = new odf("odt/base/$base.odt"); 		//Initializing the object with above file name
-  
+ 
 $file = $_FILES["photo"]["name"];
   	if($file == NULL)			//checks if no file is selected
   	  {
@@ -78,42 +78,10 @@ $lineNumber = 1;
 //Variable initialised to trace if any error in csv file occurs
 $errorExist = 0;
 
-//Checking data of csv file
-while($result = fgetcsv($csvfile))
-{
-if(sizeof($result) != 8)
- {
- $errorExist = 1;
- echo  '<h4>Incorrect number of fields in line '.$lineNumber.'</h4>';
- }
-$lineNumber++;
-}
-
-if($errorExist == 1)
-{
-echo  '
-	<html>
-	<head>
-		<link href="style/bootstrap.min.css" rel="stylesheet" media="screen">	
-		<link href="style/style.css" rel="stylesheet" media="screen">
-	</head>
-
-	<body>
-	<center>
-	<h3>Please check if Double quotes (") or comma (,) are misplaced and follow the
-	 instructions for uploading csv file and check Sample file also. </h3>
-	<form action="option.php?var=csv" method ="GET">
-	<input type=hidden name=var value=csv>
-	<input class = "btn btn-primary" type = submit value="Resubmit the csv file">
-	</form>
-	</center>
-	</body>
-	</html>';
-exit;
-}
-
 $article = $odf->setSegment('articles');	//Defining Segment articles( used in .odt file)
-while($result = fgetcsv($csvfile))		//Fetching data in each row of csv file to array $result
+
+//Fetching data in each row of csv file to array $result
+while(($result = fgetcsv($csvfile,1000, ","))!==FALSE)
 {
 	
 		 //image
@@ -144,7 +112,7 @@ $odf->mergeSegment($article);			//Ending the segment Object
 
 // We save the file
 $odf -> saveToDisk("odt/cert/$id.odt"); 
-
+/*
 //copying the odt file to be converted to PDF
 	copy("odt/cert/$id.odt", "../odt2pdf/cde-root/home/sukhdeep/Desktop/$id.odt");
 
@@ -159,8 +127,10 @@ $odf -> saveToDisk("odt/cert/$id.odt");
 	copy("Desktop/$id.pdf", "../../../../CGS/pdf/$id.pdf");
 	unlink("Desktop/$id.pdf");
 	unlink("Desktop/$id.odt");
-
-
+*/
+$source_file = "odt/cert/56c5da70e4e19.odt";
+$command = 'unoconv -f pdf '.$source_file;
+ exec($command);
 
 echo   '<html>
 	<head>
