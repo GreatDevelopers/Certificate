@@ -27,7 +27,11 @@ Requirements
       
       It can be cloned by using following command in terminal:
 
-        $ git clone https://github.com/Sukhtaaj/odtphp.git
+        $ git clone https://github.com/GreatDevelopers/Certificate.git
+	
+	Then move to the odtphp branch using the following command from terminal:
+	
+	$ git checkout odtphp
 
       In case Git is not installed then Install git using below command:
 
@@ -38,13 +42,15 @@ Requirements
 
         $ sudo chmod -R 777 /var/www/odtphp
 
-4. Download the odt2pdf.tar.gz from "http://bit.ly/1dVyg61"
-   Place it in /var/www/odtphp/ and and then
+4. Install the unoconv web service using the following command from the terminal:
+	
+	$ sudo apt-get update
 
-
-        $ cd /var/www/odtphp	
-        $ tar -zxvf odt2pdf.tar.gz
-        $ chmod -R 777 odt2pdf/
+	$ sudo apt-get install unoconv
+  
+You can also install the dependencies if required like
+	
+	$ sudo apt-get install python3-uno	
 
 Congratulations! You have successfully set it up.
 

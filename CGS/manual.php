@@ -142,22 +142,12 @@ $odf->mergeSegment($article);
 // We save the file 
 
 $odf -> saveToDisk("odt/cert/$id.odt"); //Saving the odt file to directory
+//Convert the odt format to pdf
 
-//copying the odt file to be converted to PDF
-	copy("odt/cert/$id.odt", "../odt2pdf/cde-root/home/sukhdeep/Desktop/$id.odt");
-
-//changing Directory
-	chdir('../odt2pdf/cde-root/home/sukhdeep');
-
-//Command for conversion to PDF
-	$myCommand = "./libreoffice.cde --headless --convert-to pdf:writer_pdf_Export Desktop/$id.odt --outdir Desktop/";
-	exec ($myCommand);
-
-//Copying back the Converted File
-	copy("Desktop/$id.pdf", "../../../../CGS/pdf/$id.pdf");
-//Deleting unrequired files after converting and copying
-	unlink("Desktop/$id.pdf");
-	unlink("Desktop/$id.odt");
+$source_file = "odt/cert/$id.odt";
+$command = 'unoconv -f pdf --output /var/www/html/Certificate/CGS/pdf/ ' . $source_file;
+$result = shell_exec($command);
+echo $result;
 
 echo   '<html>
 	<head>

@@ -128,9 +128,10 @@ $odf -> saveToDisk("odt/cert/$id.odt");
 	unlink("Desktop/$id.pdf");
 	unlink("Desktop/$id.odt");
 */
-$source_file = "odt/cert/56c5da70e4e19.odt";
-$command = 'unoconv -f pdf '.$source_file;
- exec($command);
+$source_file = "odt/cert/$id.odt";
+$command = 'unoconv -f pdf --output /var/www/html/Certificate/CGS/pdf/ ' . $source_file;
+$result = shell_exec($command);
+echo $result;
 
 echo   '<html>
 	<head>
