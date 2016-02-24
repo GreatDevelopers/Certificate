@@ -19,42 +19,48 @@ Requirements
 
         $ sudo apt-get install php5 (if not installed)
 
-2. Place the downloaded odtphp.zip from github in /var/www and extract using
+2. Clone the project by using following command in terminal:
 
+        $ git clone https://github.com/GreatDevelopers/Certificate.git
+	
+	Then move to the odtphp branch using the following command from terminal:
+	
+	$ git checkout odtphp
 
-        $ unzip odtphp.zip 
-   OR
-      
-      It can be cloned by using following command in terminal:
-
-        $ git clone https://github.com/Sukhtaaj/odtphp.git
-
-      In case Git is not installed then Install git using below command:
+        In case Git is not installed then Install git using below command:
 
         $ sudo apt-get install git
 
 3. Change the permission of odtphp folder and its sub-directories to drwxrwxrwx
 
 
-        $ sudo chmod -R 777 /var/www/odtphp
+        $ sudo chmod -R 777 /var/www/Certificate
 
-4. Download the odt2pdf.tar.gz from "http://bit.ly/1dVyg61"
-   Place it in /var/www/odtphp/ and and then
+4. Install the unoconv web service using the following command from the terminal:
+	
+	$ sudo apt-get update
 
-
-        $ cd /var/www/odtphp	
-        $ tar -zxvf odt2pdf.tar.gz
-        $ chmod -R 777 odt2pdf/
+	$ sudo apt-get install unoconv
+  
+	You can also install the dependencies if required like
+	
+	$ sudo apt-get install python3-uno	
 
 Congratulations! You have successfully set it up.
 
-Goto 
-http://localhost/odtphp/CGS
+Go to http://localhost/odtphp/CGS
 
 OR
 
 http://localhost/~username/odtphp/CGS (if Usermode is enabled in apache configuration)
 
+If you got an error like Abort pclzip.lib.php : Missing zlib extensions
+
+	$ cd /var/www/Certificate/library/zip/pclzip/
+
+	$ vim pclzip.lib.php
+
+Replace gzopen64 with gzopen
 
 USER MANUAL
 -----------
