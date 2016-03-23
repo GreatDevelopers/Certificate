@@ -10,49 +10,21 @@ As well as for Batch/Number of candidates by simply providing the CSV format fil
 Requirements 
 ------------
 1. Apache web server
-
-
-        $ sudo apt-get install apache2 (if not installed)
-
 2. php interpreter
-
-
-        $ sudo apt-get install php5 (if not installed)
-
-2. Clone the project by using following command in terminal:
-
-        $ git clone https://github.com/GreatDevelopers/Certificate.git
+3. unoconv
+4. python3-uno
 	
-	Then move to the odtphp branch using the following command from terminal:
+Setup 
+	cd ../path/to/certificate/
+	sudo ./install.sh
 	
-	$ git checkout odtphp
-
-        In case Git is not installed then Install git using below command:
-
-        $ sudo apt-get install git
-
-3. Change the permission of odtphp folder and its sub-directories to drwxrwxrwx
-
-
-        $ sudo chmod -R 777 /var/www/Certificate
-
-4. Install the unoconv web service using the following command from the terminal:
-	
-	$ sudo apt-get update
-
-	$ sudo apt-get install unoconv
-  
-	You can also install the dependencies if required like
-	
-	$ sudo apt-get install python3-uno	
-
 Congratulations! You have successfully set it up.
 
-Go to http://localhost/odtphp/CGS
+Go to http://localhost/Certificate/CGS/
 
 OR
 
-http://localhost/~username/odtphp/CGS (if Usermode is enabled in apache configuration)
+http://localhost/~username/Certificate/CGS/(if Usermode is enabled in apache configuration)
 
 If you got an error like Abort pclzip.lib.php : Missing zlib extensions
 
