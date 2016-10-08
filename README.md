@@ -23,17 +23,25 @@ Congratulations! You have successfully set it up.
 
 Go to http://localhost/Certificate/CGS/?cert=design1
 
+If you want to make certificate according to design 1.
+
 OR
 
 http://localhost/Certificate/CGS/?cert=design2
+
+If you want to make certificate according to design 1.
 
 OR
 
 http://localhost/Certificate/CGS/?cert=design3
 
+If you want to make certificate according to design 1.
+
 OR
 
 http://localhost/Certificate/CGS/?cert=design4
+
+If you want to make certificate according to design 1.
 
 OR
 
