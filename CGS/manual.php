@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once('../library/odf.php');
-require_once('../library/simpleimage.php');
 $base = $_SESSION["base"]; 				//Getting file name with filled Institute Details
 $odf = new odf("odt/base/$base.odt");   		//Initializing the object with above file name
 $id = uniqid();
