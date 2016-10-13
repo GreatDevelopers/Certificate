@@ -29,19 +29,19 @@ OR
 
 http://localhost/Certificate/CGS/?cert=design2
 
-If you want to make certificate according to design 1.
+If you want to make certificate according to design 2.
 
 OR
 
 http://localhost/Certificate/CGS/?cert=design3
 
-If you want to make certificate according to design 1.
+If you want to make certificate according to design 3.
 
 OR
 
 http://localhost/Certificate/CGS/?cert=design4
 
-If you want to make certificate according to design 1.
+If you want to make certificate according to design 4.
 
 OR
 
