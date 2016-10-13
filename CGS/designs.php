@@ -5,7 +5,7 @@ require_once('../library/odf.php');
 $sel = $_GET["cert"];    //Represents Selection
 $odf = new odf("odt/design/$sel.odt");
 if($_SERVER['REQUEST_METHOD'] == 'POST')
-{ 
+{
 // storing data from html form to php variables
 $insName = $_POST["in"];
 $aidedStatus = $_POST["as"];
@@ -39,10 +39,10 @@ $_SESSION["base"] = $base;
 
 $odf -> saveToDisk("odt/base/$base.odt");	//saving to Directory to be used in further steps
 
-echo '  
+echo '
 	<html>
 	<head>
-		<link href="style/bootstrap.min.css" rel="stylesheet" media="screen">	
+		<link href="style/bootstrap.min.css" rel="stylesheet" media="screen">
 		<link href="style/style.css" rel="stylesheet" media="screen">
 	</head>
 
@@ -61,8 +61,8 @@ echo '
 	</center>
 	<p><h4>Note:</h4>
 	<li><strong>Manual:</strong> Generates Certificate for One Candidate by manually filling Candidate Details.</li>
-	<li><strong>UPload CSV:</strong> This feature allow you to generate Batch certificates by simply taking csv file (for Candidate Details) & a compressed file containing images. 
-      
+	<li><strong>UPload CSV:</strong> This feature allow you to generate Batch certificates by simply taking csv file (for Candidate Details) & a compressed file containing images.
+
 	</body>';
 	exit;
 }
@@ -70,9 +70,9 @@ echo '
 ?>
 
 <html>
-	<head>		
+	<head>
 		<title>Academic Certificate</title>
-		<link href="style/bootstrap.min.css" rel="stylesheet" media="screen">	
+		<link href="style/bootstrap.min.css" rel="stylesheet" media="screen">
 		<link href="style/style.css" rel="stylesheet" media="screen">
 
 <script>
@@ -210,7 +210,7 @@ if (check12==null || check12=="")
 	    {
 		alert("Invalid Characters Entered in Designation");
 		return false;
-}	       
+}
 }
 </script>
 
@@ -218,71 +218,71 @@ if (check12==null || check12=="")
 	<body>
 		<center>
     			<header><h1 style="font-family:verdana;">Institute Details</h1></header>
-		<p class="bottom-one">		
+		<p class="bottom-one">
 			<center>
-<p class="bottom-one">			
+<p class="bottom-one">
 <table>
 <form name=new id=myform method=POST onSubmit ="return validateForm();">
-<tr> 
- <td>Institution Name:</td> 
+<tr>
+ <td>Institution Name:</td>
  <td><input type=text name=in title="For e.g. Guru Nanak Dev Engineering College"></td>
 </tr>
 
-<tr> 
- <td>Aided Status:</td> 
+<tr>
+ <td>Aided Status:</td>
  <td><input type=text name=as title="For e.g. Punjab Govt. Aided Status"></td>
 </tr>
 
-<tr> 
- <td>Institute Tagline:</td> 
+<tr>
+ <td>Institute Tagline:</td>
  <td><input type=text name=it title="For e.g. An Autonomous College u/s 2(f) and 12(B) of UGC Act 1956"></td>
 </tr>
 
 <tr>
- <td>Affiliation:</td> 
+ <td>Affiliation:</td>
  <td><input type=text name=a title="For e.g. AICTE Approved, NBA Accreditted, Affiliated to PTU, Jalandhar"></td>
 </tr>
 
 <tr>
- <td>Event:</td> 
+ <td>Event:</td>
  <td><input type=text name=e title="For e.g. Six Week Training"></td>
 </tr>
 
 <tr>
- <td>Topic:</td> 
+ <td>Topic:</td>
  <td><input type=text name=t title="For e.g. Computing Technology"></td>
 </tr>
 
 <tr>
- <td>Signature(Left):</td> 
+ <td>Signature(Left):</td>
  <td><input type=text name=s1 title="For e.g. Dr M S Saini"></td>
 </tr>
 
 <tr>
- <td>Designation:</td> 
+ <td>Designation:</td>
  <td><input type=text name=d1 title="For e.g. Director"></td>
 </tr>
 
 <tr>
- <td>Signature(Middle):</td> 
+ <td>Signature(Middle):</td>
  <td><input type=text name=s2 ></td>
 </tr>
 
 <tr>
- <td>Designtion:</td> 
+ <td>Designtion:</td>
  <td><input type=text name=d2 ></td>
 </tr>
 
 <tr>
- <td>Signature(Right):</td> 
+ <td>Signature(Right):</td>
  <td><input type=text name=s3 ></td>
 </tr>
 
 <tr>
- <td>Desigantion:</td> 
+ <td>Desigantion:</td>
  <td><input type=text name=d3 ></td>
 </tr>
-  
+
 </table>
 <input class="btn btn-primary" type=submit name=Submit value=Submit>
 </center>
@@ -291,4 +291,3 @@ if (check12==null || check12=="")
 </br>
 </body>
 </html>
-
