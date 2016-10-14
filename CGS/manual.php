@@ -145,7 +145,7 @@ $odf -> saveToDisk("odt/cert/$id.odt"); //Saving the odt file to directory
 //Convert the odt format to pdf
 
 $source_file = "odt/cert/$id.odt";
-$command = 'unoconv -f pdf --output /var/www/html/Certificate/CGS/pdf/ ' . $source_file;
+$command = 'unoconv -f pdf --output /var/www/html/Certificate/CGS/pdf/'.$id.'.pdf ' . $source_file;
 $result = shell_exec($command);
 echo $result;
 
