@@ -21,29 +21,7 @@ Setup
 
 Congratulations! You have successfully set it up.
 
-Go to http://localhost/Certificate/CGS/?cert=design1
-
-If you want to make certificate according to design 1.
-
-OR
-
-http://localhost/Certificate/CGS/?cert=design2
-
-If you want to make certificate according to design 2.
-
-OR
-
-http://localhost/Certificate/CGS/?cert=design3
-
-If you want to make certificate according to design 3.
-
-OR
-
-http://localhost/Certificate/CGS/?cert=design4
-
-If you want to make certificate according to design 4.
-
-OR
+Go to http://localhost/Certificate/CGS/
 
 http://localhost/~username/Certificate/CGS/(if Usermode is enabled in apache configuration)
 
@@ -54,6 +32,20 @@ If you got an error like Abort pclzip.lib.php : Missing zlib extensions
 	$ vim pclzip.lib.php
 
 Replace gzopen64 with gzopen
+
+Now keep filling the values. If you found error at:
+
+http://localhost/Certificate/CGS/manual.php
+
+then find the php.ini file using command
+
+	$ locate php.ini
+
+and remove the ";" in front of
+
+;extension=php_gd2.dll
+
+If still not working post an issue.
 
 USER MANUAL
 -----------
