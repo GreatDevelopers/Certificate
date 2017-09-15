@@ -110,8 +110,10 @@ while(($result = fgetcsv($csvfile,1000, ","))!==FALSE)
 
 $odf->mergeSegment($article);			//Ending the segment Object
 
+// Original ODT file.
+$source_file = "odt/cert/$id.odt";
 // We save the file
-$odf -> saveToDisk("odt/cert/$id.odt"); 
+$odf -> saveToDisk($source_file);
 /*
 //copying the odt file to be converted to PDF
 	copy("odt/cert/$id.odt", "../odt2pdf/cde-root/home/sukhdeep/Desktop/$id.odt");
@@ -128,8 +130,8 @@ $odf -> saveToDisk("odt/cert/$id.odt");
 	unlink("Desktop/$id.pdf");
 	unlink("Desktop/$id.odt");
 */
-$source_file = "odt/cert/$id.odt";
-$command = 'unoconv -f pdf --output /var/www/html/Certificate/CGS/pdf/ ' . $source_file;
+$output_file = "pdf/$id.pdf";
+$command = '/usr/bin/unoconv -o '.$output_file.' -f pdf '.$source_file;
 $result = shell_exec($command);
 echo $result;
 
