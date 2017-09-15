@@ -141,11 +141,16 @@ $odf->mergeSegment($article);
 
 // We save the file 
 
-$odf -> saveToDisk("odt/cert/$id.odt"); //Saving the odt file to directory
+# Final ODT file.
+$source_file = "odt/cert/$id.odt";
+//$odf -> saveToDisk("odt/cert/$id.odt"); //Saving the odt file to directory
+$odf -> saveToDisk($source_file); //Saving the odt file to directory
 //Convert the odt format to pdf
 
-$source_file = "odt/cert/$id.odt";
-$command = 'unoconv -f pdf --output /var/www/html/Certificate/CGS/pdf/ ' . $source_file;
+//$source_file = "odt/cert/$id.odt";
+$output_file = "pdf/$id.pdf";
+//$command = 'sudo unoconv -f pdf --output /var/www/html/Certificate/CGS/pdf/'.$source_file;
+$command = '/usr/bin/unoconv -o '.$output_file.' -f pdf '.$source_file;
 $result = shell_exec($command);
 echo $result;
 
