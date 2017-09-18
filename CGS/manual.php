@@ -6,7 +6,7 @@ $odf = new odf("odt/base/$base.odt");   		//Initializing the object with above f
 $id = uniqid();
 $_SESSION['id'] = $id;					//To be used with filenames to differentiate simultaneous files being processed
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST')  
+if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
 // Assigning Form data to sesssion variables to be used in next step.
 
@@ -25,7 +25,7 @@ $_SESSION['photo'] = $photo;				//Assigning Photo variable to session vatriable
 /*************************************** Image Validation********************************************/
 
 // Link to the other file if any of following condition fails
-$url = "<meta http-equiv='Refresh' content='3; URL=option.php?var=manual'>"; 
+$url = "<meta http-equiv='Refresh' content='3; URL=option.php?var=manual'>";
 
 if($_FILES["file"]["name"] == Null)		//checks if no file is selected
 	{
@@ -83,7 +83,7 @@ imagejpeg($destination,"uploads/manual/src.jpg",100);
 }
 
 
-else 
+else
 {
 //Using Session variables to fetch form data
 	$name = $_SESSION['sal'];
@@ -95,51 +95,51 @@ else
 	$state = $_SESSION['state'];
 	$photo = $_SESSION['photo'];
 	$id = $_SESSION['id'];
-        
+
 	$targ_w = $targ_h = 500;	//Dimensions of cropped image
 	$jpeg_quality = 100;		//Quality of cropped image
 
 	$src = "uploads/manual/src.jpg";
 
 	//defining handles for creating the crooped image
-	$img_r = imagecreatefromjpeg($src);		
+	$img_r = imagecreatefromjpeg($src);
 	$dst_r = ImageCreateTrueColor( $targ_w, $targ_h );
-	
+
 	//Generating the image using co-ordinates represented by the Crop Box
 	imagecopyresampled($dst_r,$img_r,0,0,$_GET['x'],$_GET['y'],
 	$targ_w,$targ_h,$_GET['w'],$_GET['h']);
-	
+
 	//saving the jpeg image after cropping
 	imagejpeg($dst_r,"uploads/manual/cropped/$photo",$jpeg_quality);
 
 
 $article = $odf->setSegment('articles');	//Defining Segment articles( used in .odt file)
-	
+
 		 //image
                 $pic = "uploads/manual/cropped/".$photo;
-                
+
                 if(!file_exists($pic))
                   {
                   $pic = "uploads/manual/image.gif";
                  }
 		$article->setImage('pic',$pic,4);
-		
+
 		//name
                  if($mname==NULL)
 		         $article->nameArticle(" ".$name." ".$fname." ".$lname);
 		else
-                         $article->nameArticle(" ".$name." ".$fname." ".$mname." ".$lname); 
-		
+                         $article->nameArticle(" ".$name." ".$fname." ".$mname." ".$lname);
+
 		//Institute/department
 		if($city==NULL)
 			$article->deptArticle($ins.", ".$state);
 		else
 			$article->deptArticle($ins.", ".$city);
-	$article->merge();	
+	$article->merge();
 
 $odf->mergeSegment($article);
 
-// We save the file 
+// We save the file
 
 # Final ODT file.
 $source_file = "odt/cert/$id.odt";
@@ -158,18 +158,18 @@ echo $result;
 
 echo   '<html>
 	<head>
-	<link href="style/bootstrap.min.css" rel="stylesheet" media="screen">	
+	<link href="style/bootstrap.min.css" rel="stylesheet" media="screen">
 	<link href="style/style.css" rel="stylesheet" media="screen">
 	</head>
 	<body>
-	<center>	
+	<center>
 	<h1>Your Certificate has been Generated!</h1>
 	<form action="odt/cert/'.$id.'.odt">
 	<input class="btn btn-primary" type="submit" value="Download ODT">
 	</form>
 	<form action="pdf/'.$id.'.pdf">
 	<input class="btn btn-primary" type="submit" value="View/Download PDF">
-	</form>	
+	</form>
 	<form action="option.php?var=manual" method = "GET">
 	<input type=hidden name=var value=manual>
 	<input class="btn btn-primary" type="submit" value="Generate Another Certificate">
@@ -188,7 +188,7 @@ exit;
 <html lang="en">
 <head>
   <title>Live Image Selector</title>
-  <h1><center>Crop Image</center></h1>      
+  <h1><center>Crop Image</center></h1>
   <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
   <script src="jcrop/jquery.min.js"></script>
   <script src="jcrop/jquery.Jcrop.js"></script>
