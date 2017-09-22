@@ -17,7 +17,9 @@ Requirements(automatically installed during setup)
 Setup
 -----
 	cd ../path/to/certificate/
-	sudo ./install.sh
+	./install.sh
+
+P.S. Don't run it with sudo.
 	
 Congratulations! You have successfully set it up.
 
@@ -26,14 +28,6 @@ Go to http://localhost/Certificate/CGS/
 OR
 
 http://localhost/~username/Certificate/CGS/(if Usermode is enabled in apache configuration)
-
-If you got an error like Abort pclzip.lib.php : Missing zlib extensions
-
-	$ cd /var/www/Certificate/library/zip/pclzip/
-
-	$ vim pclzip.lib.php
-
-Replace gzopen64 with gzopen
 
 USER MANUAL
 -----------
