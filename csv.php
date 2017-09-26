@@ -1,6 +1,6 @@
 <?php session_start();
 
-require_once('../library/odf.php');
+require_once('library/odf.php');
 
   $id = uniqid();				//To be used with filenames to differentiate simultaneous files being processed 
   $csv = $id.$_FILES["file"]["name"];
