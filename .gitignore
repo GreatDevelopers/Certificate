@@ -34,7 +34,7 @@ nosetests.xml
 .project
 .pydevproject
 *~
-CGS/odt/base/
-CGS/odt/cert/
-CGS/pdf/
-CGS/uploads/
+odt/base/
+odt/cert/
+pdf/
+uploads/

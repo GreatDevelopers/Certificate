@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <?php
 
-require_once('../library/odf.php');
+require_once('library/odf.php');
 $sel = $_GET["cert"];    //Represents Selection
 $odf = new odf("odt/design/$sel.odt");
 if($_SERVER['REQUEST_METHOD'] == 'POST')
