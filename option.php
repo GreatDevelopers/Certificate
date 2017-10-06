@@ -67,6 +67,17 @@ if (check6==null || check6=="")
 }
 
 
+var check7=document.forms["new"]["file"].value;
+if (check7=="")
+   {
+var retval= confirm("If you do not upload an image, it will left empty on the certificate. OK to continue"); 
+if( retval != true ){
+return false;
+               }
+
+   }
+
+
 }
 </script>
 
@@ -79,7 +90,7 @@ echo '
 <body>
 <center><h2>(Manual Entry)</h2><table>
 <p class ="bottom-one">
-<form name=new action="manual.php" method="post" enctype="multipart/form-data" onSubmit="return validateForm();">
+<form name=new action="decide.php" method="post" enctype="multipart/form-data" onSubmit="return validateForm();">
 <tr>
 <tr><td>Name Initial:</td>
 		    <td><select class="span1" name ="sal">
