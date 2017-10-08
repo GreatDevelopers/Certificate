@@ -5,7 +5,6 @@ require_once('library/odf.php');
   $id = uniqid();				//To be used with filenames to differentiate simultaneous files being processed 
   $csv = $id.$_FILES["file"]["name"];
 
-echo "csv variable ".$csv;
 /******************************** csv File input validation********************************************/
 
 //Link to other file in case any of folllowing conditions fail
@@ -38,14 +37,7 @@ $odf = new odf("odt/base/$base.odt"); 		//Initializing the object with above fil
  
 
 $file = $_FILES["photo"]["name"];
-/*
-  	if($file == NULL)			//checks if no file is selected
-  	  {
-  	    echo "<center><h2>No compressed file selected for images<h2></center>";
-  	    echo $url;
-  	    exit;
-    	  }
-*/
+
 if($file!=NULL)
 {
 chdir('uploads/csv/');
@@ -103,16 +95,8 @@ while(($result = fgetcsv($csvfile,1000, ","))!==FALSE)
                 $article->setImage('pic',$pic,4);
 }
 else $article->pic(" ");
-/*		
-if ($_FILES["photo"]["name"]==NULL)
-{
-	$article->pic(" ");
-}	
-else{
-$article->setImage('pic',$pic,4);
-} 
-*/
-	//name
+	
+       //name
                 if($result[2] == NULL)
 		         $article->nameArticle(" ".$result[0]." ".$result[1]." ".$result[3]);
 		else
@@ -132,22 +116,7 @@ $odf->mergeSegment($article);			//Ending the segment Object
 $source_file = "odt/cert/$id.odt";
 // We save the file
 $odf -> saveToDisk($source_file);
-/*
-//copying the odt file to be converted to PDF
-	copy("odt/cert/$id.odt", "../odt2pdf/cde-root/home/sukhdeep/Desktop/$id.odt");
 
-//changing Directory
-	chdir('../odt2pdf/cde-root/home/sukhdeep');
-
-//Command for conversion to PDF
-	$myCommand = "./libreoffice.cde --headless --convert-to pdf:writer_pdf_Export Desktop/$id.odt --outdir Desktop/";
-	exec ($myCommand);
-
-//Copying the converted file to the PDF folder
-	copy("Desktop/$id.pdf", "../../../../CGS/pdf/$id.pdf");
-	unlink("Desktop/$id.pdf");
-	unlink("Desktop/$id.odt");
-*/
 $output_file = "pdf/$id.pdf";
 $command = '/usr/bin/unoconv -o '.$output_file.' -f pdf '.$source_file;
 $result = shell_exec($command);
