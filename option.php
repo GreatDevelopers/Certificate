@@ -79,6 +79,21 @@ return false;
 
 
 }
+function validateformcsv(){
+
+var check8=document.forms["csv"]["photo"].value;
+if (check8=="")
+   {
+var retrieve_val= confirm("If you do not upload images compressed file, it will left empty on the certificates. OK to continue"); 
+if( retrieve_val != true ){
+return false;
+               }
+
+   }
+
+
+
+}
 </script>
 
 
@@ -134,7 +149,7 @@ echo '  <body >
 	<strong>Note:</strong><br>
 	<li>Sample file containing csv and .tar.gz files can be Downloaded <a href="sample.zip">HERE</a></li>
 	</p></center><br><br>
-	<form action=csv.php method = "POST" action="csv.php" enctype="multipart/form-data">
+	<form name=csv action=csv.php method = "POST" enctype="multipart/form-data" onsubmit="return validateformcsv();">
 	<strong>Select your (.csv) file: </strong><input type="file" name="file">
 	<p><strong>Select your (.tar.gz) or (.zip) file:</strong><input type="file" name="photo"><br>
 	<input class="btn btn-primary" type="submit" value="Submit"></p>
