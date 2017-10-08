@@ -5,11 +5,9 @@ $base = $_SESSION["base"]; 				//Getting file name with filled Institute Details
 $odf = new odf("odt/base/$base.odt");   		//Initializing the object with above file name
 $id = uniqid();
 $_SESSION['id'] = $id;					//To be used with filenames to differentiate simultaneous files being processed
-//echo $_SERVER['REQUEST_METHOD'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST')  
 {
 // Assigning Form data to sesssion variables to be used in next step.
-//echo $_POST["mname"];
 
 $_SESSION['sal'] = $_POST["sal"];
 $_SESSION['fname'] = $_POST["fname"];
@@ -18,7 +16,6 @@ $_SESSION['lname'] = $_POST["lname"];
 $_SESSION['ins'] = $_POST["ins"];
 $_SESSION['city'] = $_POST["city"];
 $_SESSION['state'] = $_POST["state"];
-//echo $_SESSION['lname'];
 //assigning image name to variable photo.
 $photo = "$id".strtok($_FILES["file"]["name"],".");	//using strtok() to store filename without extension
 $_SESSION['photo'] = $photo;				//Assigning Photo variable to session vatriable
@@ -43,7 +40,6 @@ header( "Location: manual_no_image.php" );die;
 	}
 
 else{
-//echo $_POST["mname"];
 move_uploaded_file($_FILES["file"]["tmp_name"],"uploads/manual/" .$photo);
 
 $photo_path = "uploads/manual/$photo";          //storing path of uploaded photo in variable
@@ -81,9 +77,6 @@ imagecopyresampled($destination,$origin,0,0,0,0,$originWidth,$originHeight,$orig
 
 //Finally saving the image as jpeg in directory to be used by cropping tool
 imagejpeg($destination,"uploads/manual/src.jpg",100);
-
-
-
 
 header( "Location: manual_image.php" );
 }
