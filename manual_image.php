@@ -1,106 +1,14 @@
 <?php
 session_start();
 require_once('library/odf.php');
-//require_once('decide.php');
 $base = $_SESSION["base"]; 				//Getting file name with filled Institute Details
 $odf = new odf("odt/base/$base.odt");   		//Initializing the object with above file name
 $id = uniqid();
 $_SESSION['id'] = $id;					//To be used with filenames to differentiate simultaneous files being processed
-//$flip="";
-//echo $_FILES["file"]["type"];
-//echo $photo_path;
-//$_SESSION['flip']=$flip;
-//echo $_SERVER['REQUEST_METHOD'];
-/*
-if ($_SERVER['REQUEST_METHOD'] == 'POST')  
-{
-// Assigning Form data to sesssion variables to be used in next step.
 
-$_SESSION['sal'] = $_POST["sal"];
-$_SESSION['fname'] = $_POST["fname"];
-$_SESSION['mname'] = $_POST["mname"];
-$_SESSION['lname'] = $_POST["lname"];
-$_SESSION['ins'] = $_POST["ins"];
-$_SESSION['city'] = $_POST["city"];
-$_SESSION['state'] = $_POST["state"];
-
-//assigning image name to variable photo.
-
-$photo = "$id".strtok($_FILES["file"]["name"],".");	//using strtok() to store filename without extension
-$_SESSION['photo'] = $photo;				//Assigning Photo variable to session vatriable
-*/
-/*	************************************** Image Validation********************************************/
-
-// Link to the other file if any of following condition fails
-/*
-$url = "<meta http-equiv='Refresh' content='3; URL=option.php?var=manual'>"; 
-
-if($_FILES["file"]["name"] == Null)		//checks if no file is selected
-	{
-	  echo "<center><strong>No Image Selected!</strong></center>";
-	  echo $url;
-	  exit;
-	}
-
-if($_FILES["file"]["size"] > 400144) 		//Size validation Condition(should be less than 400kb)
-	{
-	  echo "<center><strong>Image Size Exceeded...</strong></center>";
-	  echo $url;
-	  exit;
-	}
-*/
-//moving the uploaded file to directory
-/*
-move_uploaded_file($_FILES["file"]["tmp_name"],"uploads/manual/" .$photo);
-
-$photo_path = "uploads/manual/$photo";		//storing path of uploaded photo in variable
-
-//Checking the type of uploaded Image file
-
-if ($_FILES["file"]["type"] == "image/gif")
-	$origin = imagecreatefromgif($photo_path);
-
-elseif($_FILES["file"]["type"] == "image/jpeg")
-	$origin = imagecreatefromjpeg($photo_path);
-
-elseif($_FILES["file"]["type"] == "image/jpg")
-	$origin = imagecreatefromjpeg($photo_path);
-
-elseif($_FILES["file"]["type"] == "image/png")
-	$origin = imagecreatefrompng($photo_path);
-
-//In case of any other format of uploaded file
-else
-	{
-	  echo "<center><strong>Invalid Image File...</strong></center>";
-	  echo $url;
-	  exit;
-	}
-
-$originWidth = imagesx($origin);   //Width of original uploaded image
-$originHeight = imagesy($origin);  //Height of original uploaded image
-
-//creating another image to which the original image is copied
-$destination = imageCreateTrueColor( $originWidth, $originHeight );
-
-//Copying the original uploaded image to new created one
-imagecopyresampled($destination,$origin,0,0,0,0,$originWidth,$originHeight,$originWidth,$originHeight);
-
-//Finally saving the image as jpeg in directory to be used by cropping tool
-imagejpeg($destination,"uploads/manual/src.jpg",100);
-
-}
-
-
-else 
-{echo "else section";
-*/
 //Using Session variables to fetch form data
-echo "outside ".$_POST['x'];
 if ($_SERVER['REQUEST_METHOD'] == 'POST')
 {
-echo $_POST['x'];
-echo $_SESSION['mname'];
 
 	$name = $_SESSION['sal'];
 	$fname = $_SESSION['fname'];
