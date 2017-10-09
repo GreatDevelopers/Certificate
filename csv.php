@@ -35,13 +35,11 @@ $base = $_SESSION["base"];			//Getting file name with filled Institute Details
   
 $odf = new odf("odt/base/$base.odt"); 		//Initializing the object with above file name
  
+
 $file = $_FILES["photo"]["name"];
-  	if($file == NULL)			//checks if no file is selected
-  	  {
-  	    echo "<center><h2>No compressed file selected for images<h2></center>";
-  	    echo $url;
-  	    exit;
-    	  }
+
+if($file!=NULL)
+{
 chdir('uploads/csv/');
 exec("mkdir $id");				//MAking folder to store the compressed file and then ectract it.
 move_uploaded_file($_FILES["photo"]["tmp_name"],"$id/$file");     //storing the compressed folder for images in 
@@ -69,6 +67,7 @@ chdir('../../..');				//changing directory back to previous
 $dest =  strtok($_FILES["photo"]["name"],".");	//using strtok for storing the folder Name after extraction
 unlink("uploads/csv/$id/$file");  		//After Extracting Deleting the compressed file 
 
+}
 
 $csvfile = fopen("uploads/csv/data/$csv","r");	//Opening csv file in read mode
 
@@ -85,7 +84,8 @@ while(($result = fgetcsv($csvfile,1000, ","))!==FALSE)
 {
 	
 		 //image
-            
+            if($_FILES["photo"]["name"]!=NULL)
+{
                 $pic = "uploads/csv/$id/$dest/".$result[7];
 		if(!file_exists($pic))
                   {
@@ -93,8 +93,10 @@ while(($result = fgetcsv($csvfile,1000, ","))!==FALSE)
                  }
 
                 $article->setImage('pic',$pic,4);
-		
-		//name
+}
+else $article->pic(" ");
+	
+       //name
                 if($result[2] == NULL)
 		         $article->nameArticle(" ".$result[0]." ".$result[1]." ".$result[3]);
 		else
@@ -114,22 +116,7 @@ $odf->mergeSegment($article);			//Ending the segment Object
 $source_file = "odt/cert/$id.odt";
 // We save the file
 $odf -> saveToDisk($source_file);
-/*
-//copying the odt file to be converted to PDF
-	copy("odt/cert/$id.odt", "../odt2pdf/cde-root/home/sukhdeep/Desktop/$id.odt");
 
-//changing Directory
-	chdir('../odt2pdf/cde-root/home/sukhdeep');
-
-//Command for conversion to PDF
-	$myCommand = "./libreoffice.cde --headless --convert-to pdf:writer_pdf_Export Desktop/$id.odt --outdir Desktop/";
-	exec ($myCommand);
-
-//Copying the converted file to the PDF folder
-	copy("Desktop/$id.pdf", "../../../../CGS/pdf/$id.pdf");
-	unlink("Desktop/$id.pdf");
-	unlink("Desktop/$id.odt");
-*/
 $output_file = "pdf/$id.pdf";
 $command = '/usr/bin/unoconv -o '.$output_file.' -f pdf '.$source_file;
 $result = shell_exec($command);
