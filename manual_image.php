@@ -165,7 +165,7 @@ exit;
 </style>
 
 </head>
-<body background="html/bck.jpg">
+<body background="style/bck.jpg">
 
 <div class="container">
 <div class="row">
