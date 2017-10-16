@@ -34,3 +34,8 @@ nosetests.xml
 .project
 .pydevproject
 *~
+
+odt/base/*.odt
+odt/cert/*.odt
+pdf/*.pdf
+uploads/manual/*
