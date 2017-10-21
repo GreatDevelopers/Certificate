@@ -1,6 +1,6 @@
 <?php
 $days =7;
-$path ="/Certificate/odt/base/";
+$path ="/odt/base/";
 
 // Open the directory
 if ($handle = opendir($path))
